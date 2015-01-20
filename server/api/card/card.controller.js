@@ -22,7 +22,19 @@ exports.show = function(req, res) {
 
 // Creates a new card in the DB.
 exports.create = function(req, res) {
-  Card.create(req.body, function(err, card) {
+  Card.create({
+    author: req.user._id,
+    question: req.body.question,
+    option1: {
+      description: req.body.option1,
+      votes: 0
+    },
+    option2: {
+      description: req.body.option2,
+      votes: 0
+    },
+    views: 0
+  }, function(err, card) {
     if(err) { return handleError(res, err); }
     return res.json(201, card);
   });

@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: card', function () {
+describe('Service: Card', function () {
 
   // load the service's module
   beforeEach(module('tyrApp'));
 
   // instantiate service
-  var card;
-  beforeEach(inject(function (_card_) {
-    card = _card_;
+  var Card;
+  beforeEach(inject(function (_Card_) {
+    Card = _Card_;
   }));
 
   it('should do something', function () {
-    expect(!!card).toBe(true);
+    expect(!!Card).toBe(true);
   });
 
 });
