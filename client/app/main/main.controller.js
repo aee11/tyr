@@ -14,7 +14,7 @@ angular.module('tyrApp')
         return;
       }
       $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $scope.newThing = 'Gísli';
     };
 
     $scope.deleteThing = function(thing) {

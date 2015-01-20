@@ -1,0 +1,10 @@
+div(ng-include='"components/navbar/navbar.html"')
+
+.container
+  .row.text-center
+    .card
+      form(name='newCard', ng-submit='addNewCard(newCard)')
+        input(type='text' ng-model='newCard.question' placeholder='Your Question').question
+        input(type='text' ng-model='newCard.option1' placeholder='First option')
+        input(type='text' ng-model='newCard.option2' placeholder='Second option')
+        button(type='submit') ASK!
