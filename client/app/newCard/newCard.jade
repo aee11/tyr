@@ -2,9 +2,25 @@ div(ng-include='"components/navbar/navbar.html"')
 
 .container
   .row.text-center
-    .card
-      form(name='newCard', ng-submit='addNewCard(newCard)')
-        input(type='text' ng-model='newCard.question' placeholder='Your Question').question
-        input(type='text' ng-model='newCard.option1' placeholder='First option')
-        input(type='text' ng-model='newCard.option2' placeholder='Second option')
-        button(type='submit') ASK!
+    .col-md-6
+      .card
+        form(name='newCard', ng-submit='addNewCard(newCard)')
+          .form-group
+            textarea(msd-elastic float-label='Your Question' ng-model='newCard.question' ng-maxLength='100' required)
+          //- .fl-input
+          //-   label(for='question')
+          //-   input(type='text' ng-model='newCard.question' float-label='Your Question' required name='question' ng-minLength='3' ng-maxLength='30').question.
+          .form-group
+            input(type='text' ng-model='newCard.option1' float-label='First option')
+          
+          .form-group
+            input(type='text' ng-model='newCard.option2' float-label='Second option')
+          <br />
+          button(type='submit').btn.btn-success.btn-lg.btn-block.btn-bottom Ask!
+    .col-md-6
+      .card
+        .card-body
+          h2.question {{ newCard.question }}
+        .card-footer.btn-group.btn-group-lg(role='group')
+          button.btn.btn-success.left {{ newCard.option1 }}
+          button.btn.btn-danger.right {{ newCard.option2 }}
