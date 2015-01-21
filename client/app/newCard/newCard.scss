@@ -11,8 +11,16 @@
   .card-body {
     padding-left: 0.5em;
     padding-right: 0.5em;
+    .form-group {
+      margin-bottom: 1.75em;
+    }
     h2.question {
       margin-top: 0;
+      white-space: pre-wrap; /* css-3 */
+      white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+      white-space: -pre-wrap; /* Opera 4-6 */
+      white-space: -o-pre-wrap; /* Opera 7 */
+      word-wrap: break-word; /* Internet Explorer 5.5+ */
     }
   }
   .card-footer {
@@ -70,7 +78,11 @@
       background: none;
     }
   }
+  textarea {
+
+  }
   input, label, textarea {
+    // color: #9E9E9E;
     transition: all ease-in-out .15s;
     &::-webkit-input-placeholder { color: inherit; }
     &::-moz-placeholder { color: inherit; } /* firefox 19+ */

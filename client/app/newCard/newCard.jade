@@ -6,7 +6,7 @@ div(ng-include='"components/navbar/navbar.html"')
       .card
         form(name='newCard', ng-submit='addNewCard(newCard)')
           .form-group
-            textarea(msd-elastic float-label='Your Question' ng-model='newCard.question' ng-maxLength='100' required)
+            textarea(msd-elastic float-label='Your Question' ng-model='newCard.question' ng-maxlength='100' maxlength='100' required)
           //- .fl-input
           //-   label(for='question')
           //-   input(type='text' ng-model='newCard.question' float-label='Your Question' required name='question' ng-minLength='3' ng-maxLength='30').question.
