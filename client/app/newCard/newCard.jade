@@ -24,3 +24,12 @@ div(ng-include='"components/navbar/navbar.html"')
         .card-footer.btn-group.btn-group-lg(role='group')
           button.btn.btn-success.left {{ newCard.option1 }}
           button.btn.btn-danger.right {{ newCard.option2 }}
+  .row.text-center
+    md-card
+      md-card-content
+        md-input-container(flex)
+          label Your Question
+          textarea(ng-model='newCard.question')
+        md-input-container(flex)
+          label First option
+          input(type='text' ng-model='newCard.option1')

@@ -7,6 +7,7 @@ angular.module('tyrApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
+  'ngMaterial',
   'kasperlewau.angular-float-label',
   'monospaced.elastic'
 ])
