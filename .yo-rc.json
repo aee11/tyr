@@ -13,14 +13,15 @@
       "jade": true,
       "sass": true,
       "uirouter": true,
-      "bootstrap": true,
-      "uibootstrap": true,
+      "bootstrap": false,
+      "uibootstrap": false,
       "socketio": true,
       "mongoose": true,
       "auth": true,
       "oauth": true,
       "googleAuth": true,
-      "facebookAuth": true
+      "facebookAuth": true,
+      "twitterAuth": true
     }
   },
   "generator-ng-component": {

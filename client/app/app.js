@@ -6,10 +6,7 @@ angular.module('tyrApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap',
-  'ngMaterial',
-  'kasperlewau.angular-float-label',
-  'monospaced.elastic'
+  'ngMaterial'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

@@ -1,0 +1,22 @@
+
+<md-dialog aria-label="New Question">
+  <div layout="column" layout-padding layout-align="center">
+    <form name="questionForm" ng-submit="ask()">
+      <md-input-container>
+        <label>Your Question</label>
+        <textarea type="text" ng-model="newQuestion.question"></textarea>
+      </md-input-container>
+      <md-input-container>
+        <label>First option</label>
+        <input type="text" ng-model="newQuestion.option1">
+      </md-input-container>
+      <md-input-container>
+        <label>Second option</label>
+        <input type="text" ng-model="newQuestion.option2">
+      </md-input-container>
+      <div layout="column" layout-align="center">
+        <md-button type="submit" class="md-primary" layout-align="center">Ask</md-button>
+      </div>
+    </form>
+  </div>
+</md-dialog>

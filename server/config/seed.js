@@ -5,8 +5,192 @@
 
 'use strict';
 
+var Question = require('../api/question/question.model');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+
+Question.find({}).remove(function() {
+  Question.create({
+    question: 'Which do you like more, Star Wars or Star Trek?',
+    option1: {
+      description: 'Star Wars',
+      votes: 123
+    },
+    option2: {
+      description: 'Star Trek',
+      votes: 94
+    },
+    views: 320
+  });
+  Question.create({
+    question: 'Did the Imitation Game deserve an Oscar?',
+    option1: {
+      description: 'Definitely',
+      votes: 349
+    },
+    option2: {
+      description: 'No way',
+      votes: 43
+    },
+    views: 701
+  });
+  Question.create({
+    question: 'Do you honestly like pie?',
+    option1: {
+      description: 'Yes',
+      votes: 204
+    },
+    option2: {
+      description: 'No',
+      votes: 221
+    },
+    views: 523
+  });
+    Question.create({
+    question: 'Do you like cake?',
+    option1: {
+      description: 'You bet it!',
+      votes: 123
+    },
+    option2: {
+      description: 'Ough, no!',
+      votes: 94
+    },
+    views: 320
+  });
+  Question.create({
+    question: 'Coffee or tea?',
+    option1: {
+      description: 'Coffee',
+      votes: 349
+    },
+    option2: {
+      description: 'Tea',
+      votes: 43
+    },
+    views: 701
+  });
+  Question.create({
+    question: 'Pepsi or Coke?',
+    option1: {
+      description: 'Pepsi',
+      votes: 204
+    },
+    option2: {
+      description: 'Coke',
+      votes: 221
+    },
+    views: 523
+  });
+    Question.create({
+    question: 'PC or Mac?',
+    option1: {
+      description: 'PC',
+      votes: 123
+    },
+    option2: {
+      description: 'Mac',
+      votes: 94
+    },
+    views: 320
+  });
+  Question.create({
+    question: 'HR eða HÍ?',
+    option1: {
+      description: 'HR',
+      votes: 349
+    },
+    option2: {
+      description: 'HÍ',
+      votes: 43
+    },
+    views: 701
+  });
+  Question.create({
+    question: 'Wine or beer?',
+    option1: {
+      description: 'Wine',
+      votes: 204
+    },
+    option2: {
+      description: 'Beer',
+      votes: 221
+    },
+    views: 523
+  });
+    Question.create({
+    question: 'Bacon or BACON?',
+    option1: {
+      description: 'Bacon',
+      votes: 123
+    },
+    option2: {
+      description: 'BACON',
+      votes: 94
+    },
+    views: 320
+  });
+  Question.create({
+    question: 'Cowboys or aliens?',
+    option1: {
+      description: 'Aliens',
+      votes: 349
+    },
+    option2: {
+      description: 'Cowboys',
+      votes: 43
+    },
+    views: 701
+  });
+  Question.create({
+    question: 'Marvel or DC?',
+    option1: {
+      description: 'Marvel',
+      votes: 204
+    },
+    option2: {
+      description: 'DC',
+      votes: 221
+    },
+    views: 523
+  });
+    Question.create({
+    question: 'Do you use Reddit?',
+    option1: {
+      description: 'Yes',
+      votes: 123
+    },
+    option2: {
+      description: 'No',
+      votes: 94
+    },
+    views: 320
+  });
+  Question.create({
+    question: 'Have you been to Iceland?',
+    option1: {
+      description: 'Yes',
+      votes: 349
+    },
+    option2: {
+      description: 'No, never',
+      votes: 43
+    },
+    views: 701
+  });
+  Question.create({
+    question: 'Do you really love the lamp?',
+    option1: {
+      description: 'I love lamp',
+      votes: 204
+    },
+    option2: {
+      description: 'Not really',
+      votes: 221
+    },
+    views: 523
+  });
+});
 
 Thing.find({}).remove(function() {
   Thing.create({

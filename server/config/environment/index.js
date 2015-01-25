@@ -22,7 +22,7 @@ var all = {
   port: process.env.PORT || 9000,
 
   // Should we populate the DB with sample data?
-  seedDB: false,
+  seedDB: true,
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
@@ -45,6 +45,12 @@ var all = {
     clientID:     process.env.FACEBOOK_ID || 'id',
     clientSecret: process.env.FACEBOOK_SECRET || 'secret',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
+  },
+
+  twitter: {
+    clientID:     process.env.TWITTER_ID || 'id',
+    clientSecret: process.env.TWITTER_SECRET || 'secret',
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
   },
 
   google: {
