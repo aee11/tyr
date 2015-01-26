@@ -10,6 +10,13 @@ angular.module('tyrApp')
         params: {
           batch: true
         }
+      },
+      getUserQuestions: {
+        method: 'GET',
+        isArray: true,
+        params: {
+          id: 'me'
+        }
       }
     });
 

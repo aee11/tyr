@@ -9,6 +9,24 @@ var Question = require('../api/question/question.model');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 
+User.find({}).remove(function() {
+  User.create({
+    provider: 'local',
+    name: 'Test User',
+    email: 'test@test.com',
+    password: 'test'
+  }, {
+    provider: 'local',
+    role: 'admin',
+    name: 'Admin',
+    email: 'admin@admin.com',
+    password: 'admin'
+  }, function() {
+      console.log('finished populating users');
+    }
+  );
+});
+
 Question.find({}).remove(function() {
   Question.create({
     question: 'Which do you like more, Star Wars or Star Trek?',
@@ -22,6 +40,7 @@ Question.find({}).remove(function() {
     },
     views: 320
   });
+  
   Question.create({
     question: 'Did the Imitation Game deserve an Oscar?',
     option1: {
@@ -214,20 +233,26 @@ Thing.find({}).remove(function() {
   });
 });
 
-User.find({}).remove(function() {
-  User.create({
+User.create({
     provider: 'local',
-    name: 'Test User',
-    email: 'test@test.com',
-    password: 'test'
-  }, {
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
-  }, function() {
-      console.log('finished populating users');
-    }
-  );
+    name: 'alex',
+    email: 'alex@alex.com',
+    password: 'alex'
+  }, function (err, user) {
+    Question.create({
+      author: user._id,
+      question: 'Do you like Týr?',
+      option1: {
+        description: 'Yes',
+        votes: 953
+      },
+      option2: {
+        description: 'No',
+        votes: 193
+      },
+      views: 320
+    }, function (err, question) {
+      User.findOneAndUpdate({name: 'alex'}, 
+      { $push: { questions: question._id } }, function() {});
+    });
 });

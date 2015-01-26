@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Question = require('./question.model');
+var User = require('../user/user.model');
 
 // Get list of questions
 exports.index = function(req, res) {
@@ -27,9 +28,20 @@ exports.show = function(req, res) {
   });
 };
 
+// Get all of the users questions
+exports.getMyQuestions = function(req, res) {
+  console.log('Getting user questions...');
+  User.findById(req.user._id, function (err, user) {
+    if(err) { return handleError(res, err); }
+    User.populate(user, { path: 'questions' }, function (err, user) {
+      if(err) { return handleError(res, err); }
+      return res.json(200, user.questions);
+    });
+  });
+};
+
 // Creates a new question in the DB.
 exports.create = function(req, res) {
-  console.log(req.user);
   Question.create({
     author: req.user._id,
     question: req.body.question,
@@ -44,7 +56,11 @@ exports.create = function(req, res) {
     views: 0
   }, function(err, question) {
     if(err) { return handleError(res, err); }
-    return res.json(201, question);
+    User.findByIdAndUpdate(req.user._id, 
+      { $push: { questions: question._id } }, function(err) {
+        if (err) { return handleError(res, err); }
+        return res.json(201, question);
+    });
   });
 };
 
