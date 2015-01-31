@@ -1,6 +1,9 @@
 .questionViewFrame {
   width: 50%;
   margin: 2em auto;
+  .questionHeader {
+    text-align: center;
+  }
 }
 .question-content {
   border-left: 1px solid #E0E0E0;
@@ -11,3 +14,4 @@
 .questionResultBar {
   margin-bottom: 0.5em;
 }
+

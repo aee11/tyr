@@ -10,6 +10,7 @@ router.get('/', controller.index);
 router.get('/me', auth.isAuthenticated(), controller.getMyQuestions);
 router.get('/:id', controller.show);
 router.post('/', auth.isAuthenticated(), controller.create);
+router.put('/inc', controller.incViewsAndVotes);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);

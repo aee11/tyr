@@ -9,7 +9,7 @@ div(layout='column' layout-fill)
       md-button.md-primary(ng-click='showQuestionDialog($event)') New Question
       //- {{ alert }}
     div(layout='row' layout-align='center' layout-sm='column' layout-align-sm='center center' layout-margin)
-      md-card.questionCard(ng-repeat='question in questions | filter:discarded | limitTo: 3 | filter:markSeen')
+      md-card.questionCard(ng-repeat='question in questions | filter:discarded | limitTo: 2 | filter:markSeen')
         div(layout='column' layout-align='space-between center' flex layout-padding)
           div(layout='column' layout-align='center')
             h2 {{ question.question }}

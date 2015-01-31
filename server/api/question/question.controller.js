@@ -39,7 +39,7 @@ exports.getMyQuestions = function(req, res) {
     });
   });
 };
-
+// 320 94
 // Creates a new question in the DB.
 exports.create = function(req, res) {
   Question.create({
@@ -76,6 +76,34 @@ exports.update = function(req, res) {
       return res.json(200, question);
     });
   });
+};
+
+exports.incViewsAndVotes = function(req, res) {
+  console.log(req.body);
+  Question.update({ _id: { $in: [req.body.incView[0], req.body.incView[1]] } }, 
+    { $inc: { views: 1 } }, function(err, number) {
+      if (err) { return handleError(res, err); }
+      // var optionSelected = ((req.body.incVote.answer == 1) ? "1" : "2") + ".votes";
+      // console.log(optionSelected);
+      // Question.findByIdAndUpdate(req.body.incVote.id, 
+      //   { $inc: { "option"+optionSelected: 1} }, function(err, question) {
+      //     if (err) { return handleError(res, err); }
+      //     return res.send(200);
+      //   });
+        if (req.body.incVote.answer == 1) {
+          Question.findByIdAndUpdate(req.body.incVote.id, 
+            { $inc: { "option1.votes": 1} }, function(err, question) {
+              if (err) { return handleError(res, err); }
+              return res.send(200);
+            });
+        } else {
+          Question.findByIdAndUpdate(req.body.incVote.id, 
+            { $inc: { "option2.votes": 1} }, function(err, question) {
+              if (err) { return handleError(res, err); }
+              return res.send(200);
+            });
+        }
+    });
 };
 
 // Deletes a question from the DB.

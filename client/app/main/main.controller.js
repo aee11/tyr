@@ -31,6 +31,7 @@ angular.module('tyrApp')
 
     $scope.markSeen = function(item) {
       item.seen = true;
+      item.viewCountIncremented = false;
       return true;
     };
 
@@ -42,18 +43,12 @@ angular.module('tyrApp')
     };
     $scope.questionsAnswered = 0; // how many question the user has answered
     $scope.answerFirstOption = function (answer) {
-      $scope.questionsAnswered++;
-      answer.discarded = true;
-      QuestionFactory.updateQuestionCards($scope.questions);
-      if ($scope.questionsAnswered % 3 === 0) { // 1 question remaining, get new batch
-        var newBatch = QuestionFactory.questionAPI.getNewQuestionBatch(function() {
-          angular.forEach(newBatch, function (value, key) {
-            $scope.questions.push(value);
-          });
-        });
-      }
+      answer.answer = '1';
+      questionAnswered(answer);
+      //Question.questionAPI.incrementVotesAndQuestions
     };
     $scope.answerSecondOption = function (answer) {
+      answer.answer = '2';
       questionAnswered(answer);
     };
 
@@ -61,7 +56,7 @@ angular.module('tyrApp')
       $scope.questionsAnswered++;
       answer.discarded = true;
       QuestionFactory.updateQuestionCards($scope.questions);
-      if ($scope.questionsAnswered % 2 === 0) { // 1 question remaining, get new batch
+      if ($scope.questionsAnswered % 3 === 0) { // 1 question remaining, get new batch
         var newBatch = QuestionFactory.questionAPI.getNewQuestionBatch(function() {
           angular.forEach(newBatch, function (value, key) {
             $scope.questions.push(value);
