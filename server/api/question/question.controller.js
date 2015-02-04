@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var async = require('async');
 var Question = require('./question.model');
 var User = require('../user/user.model');
 
@@ -39,7 +40,7 @@ exports.getMyQuestions = function(req, res) {
     });
   });
 };
-// 320 94
+
 // Creates a new question in the DB.
 exports.create = function(req, res) {
   Question.create({
@@ -79,30 +80,33 @@ exports.update = function(req, res) {
 };
 
 exports.incViewsAndVotes = function(req, res) {
-  console.log(req.body);
-  Question.update({ _id: { $in: [req.body.incView[0], req.body.incView[1]] } }, 
-    { $inc: { views: 1 } }, function(err, number) {
+  Question.find({ _id: { $in: [req.body.incView[0], req.body.incView[1]] } }, 
+    function(err, questions) {
       if (err) { return handleError(res, err); }
-      // var optionSelected = ((req.body.incVote.answer == 1) ? "1" : "2") + ".votes";
-      // console.log(optionSelected);
-      // Question.findByIdAndUpdate(req.body.incVote.id, 
-      //   { $inc: { "option"+optionSelected: 1} }, function(err, question) {
-      //     if (err) { return handleError(res, err); }
-      //     return res.send(200);
-      //   });
-        if (req.body.incVote.answer == 1) {
-          Question.findByIdAndUpdate(req.body.incVote.id, 
-            { $inc: { "option1.votes": 1} }, function(err, question) {
-              if (err) { return handleError(res, err); }
-              return res.send(200);
-            });
-        } else {
-          Question.findByIdAndUpdate(req.body.incVote.id, 
-            { $inc: { "option2.votes": 1} }, function(err, question) {
-              if (err) { return handleError(res, err); }
-              return res.send(200);
-            });
+      var now = Date.now();
+      async.each(questions, function (question, callback) {
+        question.views++;
+        question.lastViewed = now;
+        if (req.body.incVote.id == question._id) {
+          question.lastAnswered = now;
+          if (req.body.incVote.answer == 1) {
+            question.option1.votes++;
+          } else {
+            question.option2.votes++;
+          }
         }
+        console.log("Saving question");
+        question.save(function (err) {
+          if (err) { 
+            callback(err);
+          } else {
+            callback();
+          }
+        });
+      }, function (err) {
+        if (err) { return handleError(res, err); }
+        return res.send(200);
+      });
     });
 };
 

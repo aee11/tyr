@@ -2,12 +2,12 @@
 'use strict';
 
 angular.module('tyrApp')
-  .factory('socket', function(socketFactory) {
+  .factory('socket', function(socketFactory, Auth) {
 
     // socket.io now auto-configures its connection when we ommit a connection url
     var ioSocket = io('', {
       // Send auth token on connection, you will need to DI the Auth service above
-      // 'query': 'token=' + Auth.getToken()
+      'query': 'token=' + Auth.getToken(),
       path: '/socket.io-client'
     });
 
@@ -60,6 +60,12 @@ angular.module('tyrApp')
           cb(event, item, array);
         });
       },
+
+      // syncUserQuestions: function (modelname, array, cb) {
+      //   cb = cb || angular.noop;
+
+      //   socket.on(model)
+      // },
 
       /**
        * Removes listeners for a models updates on the socket

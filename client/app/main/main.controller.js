@@ -56,7 +56,7 @@ angular.module('tyrApp')
       $scope.questionsAnswered++;
       answer.discarded = true;
       QuestionFactory.updateQuestionCards($scope.questions);
-      if ($scope.questionsAnswered % 3 === 0) { // 1 question remaining, get new batch
+      if ($scope.questionsAnswered % 8 === 0) { // 1 question remaining, get new batch
         var newBatch = QuestionFactory.questionAPI.getNewQuestionBatch(function() {
           angular.forEach(newBatch, function (value, key) {
             $scope.questions.push(value);

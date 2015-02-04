@@ -27,7 +27,7 @@ angular.module('tyrApp')
     });
 
     var updateQuestionCards = function(questions) {
-      var questionsToUpdate = { incView: [], incVote: {id: "", answer: ""}};
+      var questionsToUpdate = { incView: [], incVote: {id: '', answer: ''}};
       angular.forEach(questions, function (value, key) {
         if (value.seen) {
           value.discarded = true;
