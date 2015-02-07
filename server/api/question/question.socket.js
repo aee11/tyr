@@ -18,22 +18,18 @@ exports.register = function(socket, usersConnected) {
 
 function onSave(socket, usersConnected, doc, cb) {
   console.log("onSave cal");
-  var ownerId = doc._id;
+  var ownerId = doc.author;
   _.forEach(usersConnected, function (userInfo, userSocketId) { 
-    console.log(userInfo.decoded_token); 
+    if (ownerId == userInfo.decoded_token._id) {
+      console.log(ownerId, userInfo.decoded_token._id);
+      console.log(userInfo);
+      socket.to(userSocketId).emit('question:save', doc);
+    }
   });
 
-  var test = {
-    '1234': {
-      decoded_token: {
-        _id: '4567'
-      }
-    }
-  }
-  console.log(_.result(_.findWhere(usersConnected, { 'decoded_token._id': ownerId })));
 
-  //console.log(usersConnected);
-  socket.emit('question:save', doc);
+  // console.log(usersConnected);
+  // socket.emit('question:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
