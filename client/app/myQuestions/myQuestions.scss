@@ -7,6 +7,9 @@
 }
 .question-content {
   border-left: 1px solid #E0E0E0;
+  @media #{$phone} {
+    border-left: 0;
+  }
 }
 .question-item-content {
   padding: 8px;

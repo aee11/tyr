@@ -34,6 +34,14 @@ md-card.questionCard {
     height: 18em;
     h2 {
         text-align: center;
-        
     }
+    @media #{$phone} {
+        height: 100%;
+    }
+}
+
+.fabMobile {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
 }

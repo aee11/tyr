@@ -5,7 +5,7 @@ div(layout='column' layout-fill)
       h3
         span Týr
   md-content
-    div(layout='row' layout-align='center' layout-padding)
+    div(layout='row' layout-align='center' layout-padding hide-sm)
       md-button.md-primary(ng-click='showQuestionDialog($event)') New Question
       //- {{ alert }}
     div(layout='row' layout-align='center' layout-sm='column' layout-align-sm='center center' layout-margin)
@@ -18,6 +18,8 @@ div(layout='column' layout-fill)
             md-button.md-primary.md-hue-2(ng-click='answerSecondOption(question)') {{ question.option2.description }}
 
     p(layout='row' layout-align='center' ng-show='questionsAnswered > 0') You have answered {{ questionsAnswered }} questions
+  md-button.md-fab.md-primary.fabMobile(ng-click='showQuestionDialog($event)' aria-label='New question' hide-gt-sm) 
+      md-icon(icon='assets/icons/ic_add.svg' style='width: 24px; height: 24px;')
 //- div(layout='row' layout-sm='column' layout-align='center' layout-margin)
   md-card.questionCard
     div(layout='column' layout-align='space-between center' flex layout-padding)

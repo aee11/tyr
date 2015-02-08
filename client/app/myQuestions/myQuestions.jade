@@ -1,11 +1,13 @@
-.md-whiteframe-z1.questionViewFrame(layout='row' layout-margin)
-  div(flex='50' layout='column' layout-align='center')
+.md-whiteframe-z1.questionViewFrame(layout='row' layout-margin layout-sm='column')
+  div(flex-gt-sm='50' layout='column' layout-align='center')
     h2.questionHeader {{ selectedQuestion.question }}
-    canvas(id='base' chart-type='Pie' data='data' labels='labels' options='options').chart.chart-pie
-    div(flex)
-      span Answer rate:
-      {{ (selectedQuestion.option1.votes + selectedQuestion.option2.votes)/selectedQuestion.views }}
-  md-content.question-content(flex='45')
+    div(ng-if='hasVotes')
+      canvas(id='base' chart-type='Pie' data='data' labels='labels' options='options').chart.chart-pie
+      div(flex)
+        span Answer rate:
+        {{ (selectedQuestion.option1.votes + selectedQuestion.option2.votes)/selectedQuestion.views }}
+    div(ng-hide='hasVotes') No answers yet, sorry!
+  md-content.question-content(flex-gt-sm='45')
     md-list
       md-item(ng-repeat='q in userQuestions')
         md-item-content(ng-click='viewDetails(q)')

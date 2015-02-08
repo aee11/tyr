@@ -21,15 +21,9 @@ function onSave(socket, usersConnected, doc, cb) {
   var ownerId = doc.author;
   _.forEach(usersConnected, function (userInfo, userSocketId) { 
     if (ownerId == userInfo.decoded_token._id) {
-      console.log(ownerId, userInfo.decoded_token._id);
-      console.log(userInfo);
       socket.to(userSocketId).emit('question:save', doc);
     }
   });
-
-
-  // console.log(usersConnected);
-  // socket.emit('question:save', doc);
 }
 
 function onRemove(socket, doc, cb) {

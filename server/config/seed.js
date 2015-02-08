@@ -244,13 +244,13 @@ User.create({
       question: 'Do you like Týr?',
       option1: {
         description: 'Yes',
-        votes: 953
+        votes: 3
       },
       option2: {
         description: 'No',
-        votes: 193
+        votes: 1
       },
-      views: 320
+      views: 6
     }, function (err, question) {
       User.findOneAndUpdate({name: 'alex'}, 
       { $push: { questions: question._id } }, function() {});

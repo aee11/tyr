@@ -45,7 +45,6 @@ angular.module('tyrApp')
     $scope.answerFirstOption = function (answer) {
       answer.answer = '1';
       questionAnswered(answer);
-      //Question.questionAPI.incrementVotesAndQuestions
     };
     $scope.answerSecondOption = function (answer) {
       answer.answer = '2';

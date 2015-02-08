@@ -2,7 +2,7 @@
   "node": true,
   "esnext": true,
   "bitwise": true,
-  "eqeqeq": true,
+  "eqeqeq": false,
   "immed": true,
   "latedef": "nofunc",
   "newcap": true,
